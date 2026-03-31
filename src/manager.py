@@ -24,16 +24,30 @@ class Manager:
                 return False
         return True
     
-    def get_apartment_costs(self,apartment_key, year, month):
+    def get_apartment_costs(self,apartment_key, year=None, month=None):
         apartment = self.apartments.get(apartment_key)
 
         if not apartment:
-            return 0.0
+            return None
         
         cost = 0.0
 
+        
         for bill in self.bills:
-            if bill.apartment == apartment_key and bill.settlement_year == year and bill.settlement_month == month :
-                cost += bill.amount_pln
+            if bill.apartment != apartment_key: continue
+            
+            
+            
+            
+            if bill.settlement_year != year and year is not None: continue
+            
+            
+            if bill.settlement_month != month and month is not None: continue
+                
+                
+                
+            cost += bill.amount_pln
+
+        
         return cost
 

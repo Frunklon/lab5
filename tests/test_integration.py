@@ -36,5 +36,5 @@ def test_apartment_total_cost():
     manager = Manager(parameters)
 
     assert manager.get_apartment_costs('apart-polanka', 2025, 1) == 910
-    assert manager.get_apartment_costs('A1', 2000, 3) == 0.0
+    assert manager.get_apartment_costs('A1', 2000, 3) == None
     assert manager.get_apartment_costs('apart-polanka', 2025, 2) == 0.0
